@@ -17,6 +17,7 @@ const initialState = {
         <StateContext.Provider
           value={{
                 activeMenu,
+                setActiveMenu
           }}
         >
             {children}
