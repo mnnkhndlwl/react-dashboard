@@ -9,7 +9,7 @@ import {useStateContext} from './context/ContextProvider';
 
 function App() {
 
-  const { activeMenu } = useStateContext();
+  const { activeMenu,themeSettings,setThemeSettings } = useStateContext();
 
   return (
     <div>
@@ -18,7 +18,9 @@ function App() {
           <div className="fixed right-4 bottom-4" style={{ zIndex: '1000' }} >
             {/* settings wala button using tooltip */}
             <TooltipComponent content="Settings" position="Top" >
-              <button type="button" className="text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white" style={{
+              <button type="button" className="text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white"
+              onClick={()=>setThemeSettings(true)}
+               style={{
                 background: 'blue', borderRadius: '50%'
               }}>
                 <FiSettings />
@@ -44,7 +46,7 @@ function App() {
              </div>   
           
           <div>
-          <ThemeSettings />
+          { themeSettings &&  <ThemeSettings />}
             <Routes>
              {/* dashboard  */}
              <Route path="/" element={(<Ecommerce />)} />
